@@ -33,9 +33,6 @@ export default {
 </script>
 
 <style lang="sass">
-.select-input
-  width: 220px
-
 .base-select__label
   color: white
   font-size: 14px

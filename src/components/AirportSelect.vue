@@ -1,12 +1,12 @@
 <template lang="pug">
 .column.is-paddingless.airport-select
-  .airports-dropdown
-    label.airport-select__label {{ label }}
-    input.base-input.airport-select__placeholder(type="text" placeholder="Find the city" @change="updateValue")
-    //- .dropdown-items
-    //-   .dropdown-item(v-for="airport in airports" :key="airport.icao" @click="setAirport(airport)") {{ airport.name }}
-    //-     span.badge.badge-primary {{ airport.city }} {{ airport.country }}
-    //-     .sm-line
+  label.airport-select__label {{ label }}
+  // vue-fuse(:list="airports" :keys="keys" :inputChangeEventName="foundAirport")
+  input.airport-select__input.airport-select__placeholder(type="text" placeholder="Find the city" @change="updateValue" @click="showDropdownItems")
+  .dropdown-items(:class="{'show-dropdown-items': showItems}")
+    .dropdown-item(v-for="airport in airports" :key="airport.icao" @click="setAirport(airport)") {{ airport.name }}
+     span.badge.badge-primary {{ airport.city }} {{ airport.country }}
+     .sm-line
 </template>
 
 <script>
@@ -28,6 +28,7 @@ export default {
   },
   data() {
     return {
+      showItems: false,
       airports: []
     };
   },
@@ -41,31 +42,28 @@ export default {
       });
   },
   methods: {
-    setAirport(airport) {
-      this.value = airport.id;
-      this.query = airport.city;
-    },
     updateValue(event) {
       this.$emit("updatePropValue", event.target.value);
+    },
+    showDropdownItems() {
+      this.showItems = !this.showItems;
     }
   }
 };
 </script>
 
 <style lang="sass">
-.select-input
-  width: 220px
-
-.airports-dropdown
-  position: relative
-
 .dropdown-items
   position: absolute
-  top: 38px
+  top: 47px
   left: 0px
   z-index: 99
   background: white
   width: 100%
+  display: none
+
+.show-dropdown-items
+  display: block
 
 .dropdown-item
   cursor: pointer
@@ -81,6 +79,7 @@ export default {
 
 .airport-select
   margin-top: 10px
+  position: relative
 
   &__label
     color: white
@@ -88,4 +87,14 @@ export default {
 
   &__placeholder::placeholder
     color: #f7b944
+
+  &__input
+    background-color: #495057 !important
+    color: #f7b944 !important
+    border-inline-start: 0px !important
+    border-block-end: 1px solid black !important
+    border-block-start: 0px !important
+    border-inline-end: 0px !important
+    width: 100%
+    font-size: 15px
 </style>
