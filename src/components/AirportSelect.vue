@@ -2,7 +2,7 @@
 .column.is-paddingless.airport-select
   label.airport-select__label {{ label }}
   // vue-fuse(:list="airports" :keys="keys" :inputChangeEventName="foundAirport")
-  input.airport-select__input.airport-select__placeholder(type="text" placeholder="Find the city" @change="updateValue" @click="showDropdownItems")
+  input.airport-select__input.airport-select__placeholder(type="text" placeholder="Find the city" @click="showDropdownItems" v-model="airport")
   .dropdown-items(:class="{'show-dropdown-items': showItems}")
     .dropdown-item(v-for="airport in airports" :key="airport.icao" @click="setAirport(airport)") {{ airport.name }}
      span.badge.badge-primary {{ airport.city }} {{ airport.country }}
@@ -20,16 +20,13 @@ export default {
     },
     value: {
       type: [Number, String]
-    },
-    placeholder: {
-      type: String,
-      default: ""
     }
   },
   data() {
     return {
       showItems: false,
-      airports: []
+      airports: [],
+      airport: ""
     };
   },
   created() {
@@ -42,11 +39,13 @@ export default {
       });
   },
   methods: {
-    updateValue(event) {
-      this.$emit("updatePropValue", event.target.value);
-    },
     showDropdownItems() {
       this.showItems = !this.showItems;
+    },
+    setAirport(airport) {
+      this.$emit("updatePropValue", airport.name);
+      this.showItems = false;
+      this.airport = airport.name;
     }
   }
 };
