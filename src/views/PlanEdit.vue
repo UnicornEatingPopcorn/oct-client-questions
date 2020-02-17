@@ -10,7 +10,8 @@
             td.plan-edit__answers {{ answer.question.id}}.
             td.plan-edit__answers {{ answer.question.title }} 
             td
-               select.input.is-small(:placeholder="answer.value || 'There is nothing here yet'" @change="updateValue" v-model="answer.value")
+               select.input.is-small.plan-edit__input(@change="updateValue" v-model="answer.value")
+                 option(value="" disabled selected hidden) Please choose one...
                  option(
                    v-for="option in answer.question.select_options"
                    :key="option.id") {{ option.name }}
@@ -79,12 +80,8 @@ export default {
   &__table
     width: 500px
 
-    input::placeholder
-      color: gray
-    input:focus::placeholder
-      color: #36363645
-    input
-      color: black
+  &__input
+    font-size: 14px
 
   &__submit-button
     display: flex
