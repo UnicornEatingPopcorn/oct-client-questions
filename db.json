@@ -433,7 +433,7 @@
             "slug": "arrival-place",
             "component": "AirportSelect"
           },
-          "value": "Saint-Petersburg",
+          "value": "Cordes, Cordes Airport",
           "id": 4155719
         },
         {
@@ -481,7 +481,7 @@
               }
             ]
           },
-          "value": "1",
+          "value": "4",
           "id": 4290067
         },
         {
@@ -524,7 +524,7 @@
             "slug": "end-date",
             "component": "BaseCalendar"
           },
-          "value": "2020-02-29",
+          "value": "2020-02-28",
           "id": 8590166
         },
         {

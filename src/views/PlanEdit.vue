@@ -10,14 +10,19 @@
             td.plan-edit__answers {{ answer.question.id}}.
             td.plan-edit__answers {{ answer.question.title }} 
             td
-              select.input.is-small.plan-edit__input(@change="updateValue" v-model="answer.value" v-if="answer.question.component === 'BaseSelect'")
+              select.input.is-small.plan-edit__input(v-model="answer.value" v-if="answer.question.component === 'BaseSelect'")
                 option {{ answer.value }}
                 option(value="" disabled selected hidden) Please choose one...
                 option(
                    v-for="option in answer.question.select_options"
                    :key="option.id") {{ option.name }} 
-              input.input.is-small.plan-edit__input(v-if="answer.question.component === 'BaseCalendar'" type="date" @change="updateValue" v-model="answer.value")              
-              input.input.is-small.plan-edit__input(v-if="answer.question.component === 'AirportSelect'" type="text" @change="updateValue" v-model="answer.value")
+              input.input.is-small.plan-edit__input(v-if="answer.question.component === 'BaseCalendar'" type="date" v-model="answer.value")              
+              select.input.is-small.plan-edit__input(v-if="answer.question.component === 'AirportSelect'" v-model="answer.value") 
+                option {{ answer.value }}
+                option(value="" disabled selected hidden) Please choose one...
+                option(
+                   v-for="airport in airports"
+                   :key="airport.id") {{ airport.city }}, {{ airport.name }}
         .plan-edit__submit-button 
           button.button.is-warning Submit
 </template>
@@ -29,13 +34,21 @@ export default {
   props: ["id"],
   data() {
     return {
-      plan: {}
+      plan: {},
+      airports: []
     };
   },
   created() {
     ClientService.getPlan(this.id)
       .then(response => {
         this.plan = response.data;
+      })
+      .catch(error => {
+        console.log("There was an error:", error.response);
+      });
+    ClientService.getAirports()
+      .then(response => {
+        this.airports = response.data;
       })
       .catch(error => {
         console.log("There was an error:", error.response);
@@ -53,9 +66,6 @@ export default {
         .catch(() => {
           console.log("There was a problem editing your plan");
         });
-    },
-    updateValue(event) {
-      return (this.answer.value = event);
     }
   }
 };
