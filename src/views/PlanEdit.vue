@@ -11,18 +11,19 @@
             td.plan-edit__answers {{ answer.question.title }} 
             td
               select.input.is-small.plan-edit__input(v-model="answer.value" v-if="answer.question.component === 'BaseSelect'")
-                option {{ answer.value }}
+                option(v-if="answer.value === true") {{ answer.value }}
                 option(value="" disabled selected hidden) Please choose one...
                 option(
                    v-for="option in answer.question.select_options"
                    :key="option.id") {{ option.name }} 
               input.input.is-small.plan-edit__input(v-if="answer.question.component === 'BaseCalendar'" type="date" v-model="answer.value")              
-              select.input.is-small.plan-edit__input(v-if="answer.question.component === 'AirportSelect'" v-model="answer.value") 
+              select.input.is-small.plan-edit__input(v-if="answer.question.component === 'AirportSelect'" v-model="answer.value")
                 option {{ answer.value }}
-                option(value="" disabled selected hidden) Please choose one...
+                option(value="" selected disabled hidden) Please choose one...
                 option(
                    v-for="airport in airports"
-                   :key="airport.id") {{ airport.city }}, {{ airport.name }}
+                   :key="airport.id"
+                   ) {{ airport.city }}, {{ airport.name }}
         .plan-edit__submit-button 
           button.button.is-warning Submit
 </template>

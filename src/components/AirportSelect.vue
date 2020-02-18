@@ -43,9 +43,9 @@ export default {
       this.showItems = !this.showItems;
     },
     setAirport(airport) {
-      this.$emit("updatePropValue", airport.name);
-      this.showItems = false;
       this.airport = airport.name;
+      this.$emit("updatePropValue", this.airport);
+      this.showItems = false;
     }
   }
 };
