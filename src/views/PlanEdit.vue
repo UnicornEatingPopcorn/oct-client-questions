@@ -10,12 +10,14 @@
             td.plan-edit__answers {{ answer.question.id}}.
             td.plan-edit__answers {{ answer.question.title }} 
             td
-              select.input.is-small.plan-edit__input(@change="updateValue" v-model="answer.value")
+              select.input.is-small.plan-edit__input(@change="updateValue" v-model="answer.value" v-if="answer.question.component === 'BaseSelect'")
                 option {{ answer.value }}
                 option(value="" disabled selected hidden) Please choose one...
                 option(
                    v-for="option in answer.question.select_options"
-                   :key="option.id") {{ option.name }}
+                   :key="option.id") {{ option.name }} 
+              input.input.is-small.plan-edit__input(v-if="answer.question.component === 'BaseCalendar'" type="date" @change="updateValue" v-model="answer.value")              
+              input.input.is-small.plan-edit__input(v-if="answer.question.component === 'AirportSelect'" type="text" @change="updateValue" v-model="answer.value")
         .plan-edit__submit-button 
           button.button.is-warning Submit
 </template>
