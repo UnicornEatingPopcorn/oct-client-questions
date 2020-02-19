@@ -8,25 +8,18 @@
 
 <script>
 import PlanCard from "@/components/PlanCard.vue";
-import ClientService from "@/services/ClientService.js";
 
 export default {
-  data() {
-    return {
-      plans: []
-    };
-  },
   components: {
     PlanCard
   },
+  computed: {
+    plans() {
+      return this.$store.getters["plans"];
+    }
+  },
   created() {
-    ClientService.getPlans()
-      .then(response => {
-        this.plans = response.data;
-      })
-      .catch(error => {
-        console.log("There was an error: " + error.response);
-      });
+    this.$store.dispatch("fetchPlans");
   }
 };
 </script>

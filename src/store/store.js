@@ -8,7 +8,15 @@ export default new Vuex.Store({
   state: {
     plans: []
   },
+  getters: {
+    plans(state) {
+      return state.plans;
+    }
+  },
   mutations: {
+    SET_PLANS(state, plans) {
+      state.plans = plans;
+    },
     ADD_PLAN(state, plan) {
       state.plans.push(plan);
     },
@@ -25,6 +33,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    fetchPlans({ commit }) {
+      ClientService.getPlans()
+        .then(response => {
+          commit("SET_PLANS", response.data);
+        })
+        .catch(error => {
+          console.log("There was an error:", error.response);
+        });
+    },
     createPlan({ commit }, plan) {
       ClientService.postPlan(plan);
       commit("ADD_PLAN", plan);
