@@ -18,8 +18,8 @@
                    :key="option.id") {{ option.name }} 
               input.input.is-small.plan-edit__input(v-if="answer.question.component === 'BaseCalendar'" type="date" v-model="answer.value")              
               select.input.is-small.plan-edit__input(v-if="answer.question.component === 'AirportSelect'" v-model="answer.value")
-                option {{ answer.value }}
-                option(value="" selected disabled hidden) Please choose one...
+                option(v-if="answer.value === true") {{ answer.value }}
+                option(value="" disabled selected hidden) Please choose one...
                 option(
                    v-for="airport in airports"
                    :key="airport.id"
