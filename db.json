@@ -433,7 +433,7 @@
             "slug": "arrival-place",
             "component": "AirportSelect"
           },
-          "value": "Cordes, Cordes Airport",
+          "value": "Anchor Point, Lowell Field",
           "id": 4155719
         },
         {
@@ -1038,7 +1038,7 @@
               }
             ]
           },
-          "value": "",
+          "value": "4000$ - 6000$",
           "id": 3905286
         },
         {

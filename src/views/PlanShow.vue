@@ -16,24 +16,14 @@
 </template>
 
 <script>
-import ClientService from "@/services/ClientService.js";
+import { mapState } from "vuex";
 
 export default {
   props: ["id"],
-  data() {
-    return {
-      plan: {}
-    };
-  },
   created() {
-    ClientService.getPlan(this.id)
-      .then(response => {
-        this.plan = response.data;
-      })
-      .catch(error => {
-        console.log("There was an error:", error.response);
-      });
+    this.$store.dispatch("fetchPlan", this.id);
   },
+  computed: mapState(["plan"]),
   methods: {
     deletePlan() {
       this.$store.dispatch("deletePlan", this.id).then(() => {

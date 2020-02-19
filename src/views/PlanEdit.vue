@@ -29,32 +29,15 @@
 </template>
 
 <script>
-import ClientService from "@/services/ClientService.js";
+import { mapState } from "vuex";
 
 export default {
   props: ["id"],
-  data() {
-    return {
-      plan: {},
-      airports: []
-    };
-  },
   created() {
-    ClientService.getPlan(this.id)
-      .then(response => {
-        this.plan = response.data;
-      })
-      .catch(error => {
-        console.log("There was an error:", error.response);
-      });
-    ClientService.getAirports()
-      .then(response => {
-        this.airports = response.data;
-      })
-      .catch(error => {
-        console.log("There was an error:", error.response);
-      });
+    this.$store.dispatch("fetchPlan", this.id);
+    this.$store.dispatch("fetchAirports");
   },
+  computed: mapState(["plan", "airports"]),
   methods: {
     editPlan() {
       this.$store
