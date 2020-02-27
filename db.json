@@ -502,7 +502,7 @@
               }
             ]
           },
-          "value": "There and back",
+          "value": "One way",
           "id": 7909126
         },
         {
@@ -513,7 +513,7 @@
             "slug": "start-date",
             "component": "BaseCalendar"
           },
-          "value": "",
+          "value": "2020-02-06",
           "id": 5724442
         },
         {
