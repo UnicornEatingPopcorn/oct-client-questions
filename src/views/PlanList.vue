@@ -1,7 +1,7 @@
 <template lang="pug">
 .plan-list
-  .columns
-    .column.is-half.is-offset-one-quarter
+  .columns.is-mobile
+    .column.is-6.is-offset-3
       p.plan-list__title Plan List
       PlanCard(v-for="plan in plans" :key="plan.id" :plan="plan")
 </template>

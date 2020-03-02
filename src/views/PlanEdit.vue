@@ -1,31 +1,30 @@
 <template lang="pug">
 .container
-  .columns
-    .column.is-offset-3
+  .columns.is-mobile
+    .column.is-offset-2.is-8
       p.plan-edit__id Edit Plan № {{ plan.id}} 
-      form(@submit.prevent="editPlan")
-        p.plan-edit__title Check your answers, please
-        table.table.plan-edit__table
-          tr(v-for="answer in plan.answers" :key="answer.id")
-            td.plan-edit__answers {{ answer.question.id}}.
-            td.plan-edit__answers {{ answer.question.title }} 
-            td
-              select.input.is-small.plan-edit__input(v-model="answer.value" v-if="answer.question.component === 'BaseSelect'")
-                option(v-if="answer.value === true") {{ answer.value }}
-                option(value="" disabled selected hidden) Please choose one...
-                option(
-                   v-for="option in answer.question.select_options"
-                   :key="option.id") {{ option.name }} 
-              input.input.is-small.plan-edit__input(v-if="answer.question.component === 'BaseCalendar'" type="date" v-model="answer.value")              
-              select.input.is-small.plan-edit__input(v-if="answer.question.component === 'AirportSelect'" v-model="answer.value")
-                option(v-if="answer.value === true") {{ answer.value }}
-                option(value="" disabled selected hidden) Please choose one...
-                option(
-                   v-for="airport in airports"
-                   :key="airport.id"
-                   ) {{ airport.city }}, {{ airport.name }}
-        .plan-edit__submit-button 
-          button.button.is-warning Submit
+      p.plan-edit__title Check your answers, please
+      table.table.plan-edit__table
+        tr(v-for="answer in plan.answers" :key="answer.id")
+          td.plan-edit__answers {{ answer.question.id}}.
+          td.plan-edit__answers {{ answer.question.title }} 
+          td
+            select.input.is-small.plan-edit__input(v-model="answer.value" v-if="answer.question.component === 'BaseSelect'")
+              option(v-if="answer.value === true") {{ answer.value }}
+              option(value="" disabled selected hidden) Please choose one...
+              option(
+                 v-for="option in answer.question.select_options"
+                 :key="option.id") {{ option.name }} 
+            input.input.is-small.plan-edit__input(v-if="answer.question.component === 'BaseCalendar'" type="date" v-model="answer.value")              
+            select.input.is-small.plan-edit__input(v-if="answer.question.component === 'AirportSelect'" v-model="answer.value")
+              option(v-if="answer.value === true") {{ answer.value }}
+              option(value="" disabled selected hidden) Please choose one...
+              option(
+                 v-for="airport in airports"
+                 :key="airport.id"
+                 ) {{ airport.city }}, {{ airport.name }}
+      .plan-edit__submit-button 
+        button.button.is-warning(@click="editPlan") Submit
 </template>
 
 <script>
@@ -75,7 +74,7 @@ export default {
     font-size: 18px
 
   &__table
-    width: 500px
+    width: 100%
 
   &__input
     font-size: 14px !important
@@ -83,7 +82,6 @@ export default {
   &__submit-button
     display: flex
     justify-content: flex-end
-    width: 500px
     margin-bottom: 20px
 
 .btn:hover

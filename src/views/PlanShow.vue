@@ -1,7 +1,7 @@
 <template lang="pug">
 .plan-show
-  .columns
-    .column.is-6.is-offset-3
+  .columns.is-mobile
+    .column.is-8.is-offset-2
       p.plan-show__id Plan № {{ id }}
       form
         p.plan-show__title Answers:        

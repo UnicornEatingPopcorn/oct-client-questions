@@ -1,6 +1,6 @@
 <template lang="pug">
 .create-plan-page
-  .columns
+  .columns.is-mobile
     .column.is-5.is-offset-1
       form#mainQuestions.create-plan-page__question-plan(@submit.prevent="createPlan")
         p.create-plan-page__title Let's start with few simple questions
@@ -78,7 +78,7 @@ export default {
   display: flex
   justify-content: center
   align-items: center
-  height: 81vh
+  min-height: 81vh
 
   &__title
     font-size: 18px

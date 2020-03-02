@@ -1,9 +1,9 @@
 <template lang="pug">
 nav.navbar
   .container.is-desktop
-    .navbar-brand
+    .navbar-brand.navbar-container
       span.navbar-item
-        p.header__title Portfolio version of creating travel plan
+        p.navbar__title Demo version of creating travel plan
       span.navbar-burger.burger(@click="isNavbarMenuOpened = !isNavbarMenuOpened" role="button" aria-expanded="false")
         span(aria-hidden="true")
         span(aria-hidden="true")
@@ -78,6 +78,9 @@ export default {
 <style lang="sass">
 .navbar
 
+  &-container
+    padding: 0px 60px
+
   &__title
     font-size: 20px !important
     margin-bottom: 0px
@@ -93,6 +96,7 @@ export default {
   &__item-link
     color: white
     font-size: 18px
+    margin: 0px 20px
     &.router-link-exact-active
       color: #f7b944
 
