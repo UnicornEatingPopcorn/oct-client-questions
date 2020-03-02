@@ -15,7 +15,30 @@
         .header__item
           router-link.header__item-link(:to="{ name: 'plan-create' }") Create plan 
         .header__item
-          router-link.header__item-link(:to="{ name: 'plan-list' }") Show all my plans 
+          router-link.header__item-link(:to="{ name: 'plan-list' }") Show all my plans
+        .header__item-button
+          span.header__item-button_title(@click="isSignInModalOpen = true") Sign in
+
+    .modal(:class="{ 'is-active': isSignInModalOpen }")
+      .modal-background(@click="isSignInModalOpen = false")
+      .modal-card
+        header.modal-card-head
+          p.modal-card-title Please, sign in!
+          button.delete(@click="isSignInModalOpen = false")
+        section.modal-card-body
+           .field
+             .control
+               label.brand-profile__edit-modal--form_label Login
+               input.input(v-model="login")
+           .field
+             .control
+               label.brand-profile__edit-modal--form_label Password
+               input.input(v-model="password")
+        footer.modal-card-foot
+          button.button.is-success(@click="saveUser") Save Changes
+          button.button(@click="isSignInModalOpen = false") Cancel
+
+
 
       //- .dropdown.is-right(:class="{'is-active': navbarMenu}")
       //-   .dropdown-menu(id="dropdown-menu" role="menu")
@@ -29,8 +52,16 @@
 export default {
   data() {
     return {
-      navbarMenu: false
+      navbarMenu: false,
+      isSignInModalOpen: false,
+      login: "",
+      password: ""
     };
+  },
+  methods: {
+    saveUser() {
+      return (this.isSignInModalOpen = false);
+    }
   }
 };
 </script>
@@ -46,6 +77,7 @@ export default {
   &__items
     display: flex
     justify-content: space-evenly
+    align-items: center
 
   &__item:hover
     transform: scale(1.1)
@@ -58,6 +90,27 @@ export default {
 
   &__item-link:hover
     color: #f7b944
+
+  &__item-button
+    min-width: 130px
+    font-size: 1.2rem !important
+    height: 40px
+    transition: 0.1s linear
+    background-image: linear-gradient(to right bottom, rgba(252,234,187,1) 0%, rgba(248,181,0,1) 47%, rgba(252,205,77,1) 76%, rgba(251,223,147,1) 100%)
+    transform: skewX(-18deg)
+    border-radius: 4px
+    display: inherit
+    justify-content: inherit
+    align-items: inherit
+
+    &:hover
+      transform: scale(1.1) skewX(-18deg)
+      box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2), 0 1px 15px 0 rgba(0, 0, 0, 0.19)
+
+  &__item-button_title
+    transform: skewX(18deg)
+    display: block
+    z-index: 3
 
   &__border
     border-bottom: 1px solid black
