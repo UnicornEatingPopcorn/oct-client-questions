@@ -17,16 +17,21 @@
       .create-plan-page__question-plan
         p.create-plan-page__title Additional questions
         .create-plan-page__line
-        p There is no additional questions yet. Please answer the main questions to figure out if we need more information for create your dream trip.
+        p.create-plan-page__info There is no additional questions yet. Please answer the main questions to figure out if we need more information for create your dream trip.
+        .create-plan__additional-questions-container
+          AdditionalQuestionSelect
 </template>
 
 <script>
 import ClientService from "@/services/ClientService.js";
 import Answer from "@/components/Answer.vue";
+import AdditionalQuestionSelect from "@/components/AdditionalQuestionSelect.vue";
+import { mapState } from "vuex";
 
 export default {
   components: {
-    Answer
+    Answer,
+    AdditionalQuestionSelect
   },
   data() {
     return {
@@ -46,7 +51,11 @@ export default {
       .catch(error => {
         console.log("There was an error:", error.response);
       });
+    this.$store.dispatch("fetchAdditionalQuestions");
   },
+
+  computed: mapState(["additional_questions"]),
+
   methods: {
     createNewPlan() {
       const id = Math.floor(Math.random() * 10000000);

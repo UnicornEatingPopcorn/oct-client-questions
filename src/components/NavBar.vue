@@ -34,7 +34,7 @@ nav.navbar
 
     .modal(:class="{ 'is-active': isSignInModalOpened }")
       .modal-background(@click="isSignInModalOpened = false")
-      .modal-card
+      .modal-card.modal__container
         header.modal-card-head
           p.modal-card-title Please, sign in!
           button.delete(@click="isSignInModalOpened = false")
@@ -48,8 +48,8 @@ nav.navbar
                label.brand-profile__edit-modal--form_label Password
                input.input(v-model="password")
         footer.modal-card-foot
-          button.button.is-success(@click="saveUser") Save Changes
-          button.button(@click="isSignInModalOpened = false") Cancel
+          button.button.is-dark(@click="signIn") Sign in
+          button.button.is-black(@click="isSignInModalOpened = false") Register
 </template>
 
 <script>
@@ -63,7 +63,7 @@ export default {
     };
   },
   methods: {
-    saveUser() {
+    signIn() {
       return (this.isSignInModalOpened = false);
     },
     closeNavbarDropdown() {
@@ -162,4 +162,7 @@ export default {
   &:hover
     transform: scale(1.1) skewX(-18deg)
     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2), 0 1px 15px 0 rgba(0, 0, 0, 0.19)
+
+.modal__container
+  max-width: 400px
 </style>

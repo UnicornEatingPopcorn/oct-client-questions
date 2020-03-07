@@ -16,6 +16,9 @@ export default {
   getPlans() {
     return apiClient.get("/plans");
   },
+  getAdditionalQuestions() {
+    return apiClient.get("/additional_questions");
+  },
   getPlan(id) {
     return apiClient.get("/plans/" + id);
   },

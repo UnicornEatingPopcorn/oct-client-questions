@@ -3,21 +3,18 @@
     {
       "id": 1,
       "title": "From",
-      "placeholder": "Arrival city",
       "slug": "arrival-place",
       "component": "AirportSelect"
     },
     {
       "id": 2,
       "title": "To",
-      "placeholder": "Departure city",
       "slug": "departure-place",
       "component": "AirportSelect"
     },
     {
       "id": 3,
       "title": "Seats",
-      "placeholder": "Travelers quantity",
       "slug": "travelers-quantity",
       "component": "BaseSelect",
       "select_options": [
@@ -50,7 +47,6 @@
     {
       "id": 4,
       "title": "Which way",
-      "placeholder": "Select please",
       "slug": "there-and-back",
       "component": "BaseSelect",
       "select_options": [
@@ -67,21 +63,18 @@
     {
       "id": 5,
       "title": "When to go",
-      "placeholder": "Choose please",
       "slug": "start-date",
       "component": "BaseCalendar"
     },
     {
       "id": 6,
       "title": "Return date",
-      "placeholder": "Choose please",
       "slug": "end-date",
       "component": "BaseCalendar"
     },
     {
       "id": 7,
       "title": "Expenses",
-      "placeholder": "Approximate budget",
       "slug": "approximate-budget",
       "component": "BaseSelect",
       "select_options": [
@@ -118,7 +111,6 @@
     {
       "id": 8,
       "title": "Road Book",
-      "placeholder": "Yes/No",
       "slug": "road-book",
       "component": "BaseSelect",
       "select_options": [
@@ -135,7 +127,6 @@
     {
       "id": 9,
       "title": "Arrival time",
-      "placeholder": "Arrival time",
       "slug": "arrival-time",
       "component": "BaseSelect",
       "select_options": [
@@ -240,7 +231,6 @@
     {
       "id": 10,
       "title": "Return time",
-      "placeholder": "Returning time",
       "slug": "returning-time",
       "component": "BaseSelect",
       "select_options": [
@@ -345,7 +335,6 @@
     {
       "id": 11,
       "title": "Max transfers",
-      "placeholder": "Number of transfers",
       "slug": "transfers",
       "component": "BaseSelect",
       "select_options": [
@@ -378,7 +367,6 @@
     {
       "id": 12,
       "title": "Max flight time",
-      "placeholder": "Flight time",
       "slug": "max-flight-time",
       "component": "BaseSelect",
       "select_options": [
@@ -421,954 +409,35 @@
       ]
     }
   ],
-  "plans": [
+  "additional_questions": [
     {
-      "id": 4436950,
-      "answers": [
+      "title": "Rate the quality of your previous trip?",
+      "select_options": [
         {
-          "question": {
-            "id": 1,
-            "title": "From",
-            "placeholder": "Arrival city",
-            "slug": "arrival-place",
-            "component": "AirportSelect"
-          },
-          "value": "",
-          "id": 3919779
+          "name": "I had a lot of impressions and new discoveries",
+          "id": 1
         },
         {
-          "question": {
-            "id": 2,
-            "title": "To",
-            "placeholder": "Departure city",
-            "slug": "departure-place",
-            "component": "AirportSelect"
-          },
-          "value": "",
-          "id": 3459488
+          "name": "I spent time quite calmly",
+          "id": 2
         },
         {
-          "question": {
-            "id": 3,
-            "title": "Seats",
-            "placeholder": "Travelers quantity",
-            "slug": "travelers-quantity",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "1",
-                "id": 1
-              },
-              {
-                "name": "2",
-                "id": 2
-              },
-              {
-                "name": "3",
-                "id": 3
-              },
-              {
-                "name": "4",
-                "id": 4
-              },
-              {
-                "name": "5",
-                "id": 5
-              },
-              {
-                "name": "6+",
-                "id": 6
-              }
-            ]
-          },
-          "value": "5",
-          "id": 3651898
+          "name": "I have something to tell my grandchildren",
+          "id": 3
         },
         {
-          "question": {
-            "id": 4,
-            "title": "Which way",
-            "placeholder": "Select please",
-            "slug": "there-and-back",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "One way",
-                "id": 1
-              },
-              {
-                "name": "There and back",
-                "id": 2
-              }
-            ]
-          },
-          "value": "One way",
-          "id": 7909126
+          "name": "I’m disappointed",
+          "id": 4
         },
         {
-          "question": {
-            "id": 5,
-            "title": "When to go",
-            "placeholder": "Choose please",
-            "slug": "start-date",
-            "component": "BaseCalendar"
-          },
-          "value": "2020-02-06",
-          "id": 5724442
-        },
-        {
-          "question": {
-            "id": 6,
-            "title": "Return date",
-            "placeholder": "Choose please",
-            "slug": "end-date",
-            "component": "BaseCalendar"
-          },
-          "value": "",
-          "id": 1408961
-        },
-        {
-          "question": {
-            "id": 7,
-            "title": "Expenses",
-            "placeholder": "Approximate budget",
-            "slug": "approximate-budget",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "beneath 1000$",
-                "id": 1
-              },
-              {
-                "name": "1000$ - 2000$",
-                "id": 2
-              },
-              {
-                "name": "2000$ - 3000$",
-                "id": 3
-              },
-              {
-                "name": "3000$ - 4000$",
-                "id": 4
-              },
-              {
-                "name": "4000$ - 6000$",
-                "id": 5
-              },
-              {
-                "name": "6000$ - 8000$",
-                "id": 6
-              },
-              {
-                "name": "above 8000$",
-                "id": 7
-              }
-            ]
-          },
-          "value": "",
-          "id": 645108
-        },
-        {
-          "question": {
-            "id": 8,
-            "title": "Road Book",
-            "placeholder": "Yes/No",
-            "slug": "road-book",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "Yes",
-                "id": 1
-              },
-              {
-                "name": "No",
-                "id": 2
-              }
-            ]
-          },
-          "value": "No",
-          "id": 6347971
-        },
-        {
-          "question": {
-            "id": 9,
-            "title": "Arrival time",
-            "placeholder": "Arrival time",
-            "slug": "arrival-time",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "1:00",
-                "id": 1
-              },
-              {
-                "name": "2:00",
-                "id": 2
-              },
-              {
-                "name": "3:00",
-                "id": 3
-              },
-              {
-                "name": "4:00",
-                "id": 4
-              },
-              {
-                "name": "5:00",
-                "id": 5
-              },
-              {
-                "name": "6:00",
-                "id": 6
-              },
-              {
-                "name": "7:00",
-                "id": 7
-              },
-              {
-                "name": "8:00",
-                "id": 8
-              },
-              {
-                "name": "9:00",
-                "id": 9
-              },
-              {
-                "name": "10:00",
-                "id": 10
-              },
-              {
-                "name": "11:00",
-                "id": 11
-              },
-              {
-                "name": "12:00",
-                "id": 12
-              },
-              {
-                "name": "13:00",
-                "id": 13
-              },
-              {
-                "name": "14:00",
-                "id": 14
-              },
-              {
-                "name": "15:00",
-                "id": 15
-              },
-              {
-                "name": "16:00",
-                "id": 16
-              },
-              {
-                "name": "17:00",
-                "id": 17
-              },
-              {
-                "name": "18:00",
-                "id": 18
-              },
-              {
-                "name": "19:00",
-                "id": 19
-              },
-              {
-                "name": "20:00",
-                "id": 20
-              },
-              {
-                "name": "21:00",
-                "id": 21
-              },
-              {
-                "name": "22:00",
-                "id": 22
-              },
-              {
-                "name": "23:00",
-                "id": 23
-              },
-              {
-                "name": "24:00",
-                "id": 24
-              }
-            ]
-          },
-          "value": "",
-          "id": 1153252
-        },
-        {
-          "question": {
-            "id": 10,
-            "title": "Return time",
-            "placeholder": "Returning time",
-            "slug": "returning-time",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "1:00",
-                "id": 1
-              },
-              {
-                "name": "2:00",
-                "id": 2
-              },
-              {
-                "name": "3:00",
-                "id": 3
-              },
-              {
-                "name": "4:00",
-                "id": 4
-              },
-              {
-                "name": "5:00",
-                "id": 5
-              },
-              {
-                "name": "6:00",
-                "id": 6
-              },
-              {
-                "name": "7:00",
-                "id": 7
-              },
-              {
-                "name": "8:00",
-                "id": 8
-              },
-              {
-                "name": "9:00",
-                "id": 9
-              },
-              {
-                "name": "10:00",
-                "id": 10
-              },
-              {
-                "name": "11:00",
-                "id": 11
-              },
-              {
-                "name": "12:00",
-                "id": 12
-              },
-              {
-                "name": "13:00",
-                "id": 13
-              },
-              {
-                "name": "14:00",
-                "id": 14
-              },
-              {
-                "name": "15:00",
-                "id": 15
-              },
-              {
-                "name": "16:00",
-                "id": 16
-              },
-              {
-                "name": "17:00",
-                "id": 17
-              },
-              {
-                "name": "18:00",
-                "id": 18
-              },
-              {
-                "name": "19:00",
-                "id": 19
-              },
-              {
-                "name": "20:00",
-                "id": 20
-              },
-              {
-                "name": "21:00",
-                "id": 21
-              },
-              {
-                "name": "22:00",
-                "id": 22
-              },
-              {
-                "name": "23:00",
-                "id": 23
-              },
-              {
-                "name": "24:00",
-                "id": 24
-              }
-            ]
-          },
-          "value": "",
-          "id": 5095793
-        },
-        {
-          "question": {
-            "id": 11,
-            "title": "Max transfers",
-            "placeholder": "Number of transfers",
-            "slug": "transfers",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "0",
-                "id": 1
-              },
-              {
-                "name": "1",
-                "id": 2
-              },
-              {
-                "name": "2",
-                "id": 3
-              },
-              {
-                "name": "3",
-                "id": 4
-              },
-              {
-                "name": "4",
-                "id": 5
-              },
-              {
-                "name": "5",
-                "id": 6
-              }
-            ]
-          },
-          "value": "",
-          "id": 2613785
-        },
-        {
-          "question": {
-            "id": 12,
-            "title": "Max flight time",
-            "placeholder": "Flight time",
-            "slug": "max-flight-time",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "5 hours",
-                "id": 1
-              },
-              {
-                "name": "7 hours",
-                "id": 2
-              },
-              {
-                "name": "9 hours",
-                "id": 3
-              },
-              {
-                "name": "12 hours",
-                "id": 4
-              },
-              {
-                "name": "15 hours",
-                "id": 5
-              },
-              {
-                "name": "18 hours",
-                "id": 6
-              },
-              {
-                "name": "24 hours",
-                "id": 7
-              },
-              {
-                "name": "30 hours",
-                "id": 8
-              },
-              {
-                "name": "38 hours",
-                "id": 9
-              }
-            ]
-          },
-          "value": "",
-          "id": 9890476
+          "name": "I don’t know how to relax",
+          "id": 5
         }
-      ]
-    },
-    {
-      "id": 2252114,
-      "answers": [
-        {
-          "question": {
-            "id": 1,
-            "title": "From",
-            "placeholder": "Arrival city",
-            "slug": "arrival-place",
-            "component": "AirportSelect"
-          },
-          "value": "Barstow, Goldstone /Gts/ Airport",
-          "id": 1082963
-        },
-        {
-          "question": {
-            "id": 2,
-            "title": "To",
-            "placeholder": "Departure city",
-            "slug": "departure-place",
-            "component": "AirportSelect"
-          },
-          "value": "Briggsdale, Cass Field",
-          "id": 6485736
-        },
-        {
-          "question": {
-            "id": 3,
-            "title": "Seats",
-            "placeholder": "Travelers quantity",
-            "slug": "travelers-quantity",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "1",
-                "id": 1
-              },
-              {
-                "name": "2",
-                "id": 2
-              },
-              {
-                "name": "3",
-                "id": 3
-              },
-              {
-                "name": "4",
-                "id": 4
-              },
-              {
-                "name": "5",
-                "id": 5
-              },
-              {
-                "name": "6+",
-                "id": 6
-              }
-            ]
-          },
-          "value": "3",
-          "id": 6899578
-        },
-        {
-          "question": {
-            "id": 4,
-            "title": "Which way",
-            "placeholder": "Select please",
-            "slug": "there-and-back",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "One way",
-                "id": 1
-              },
-              {
-                "name": "There and back",
-                "id": 2
-              }
-            ]
-          },
-          "value": "There and back",
-          "id": 3083403
-        },
-        {
-          "question": {
-            "id": 5,
-            "title": "When to go",
-            "placeholder": "Choose please",
-            "slug": "start-date",
-            "component": "BaseCalendar"
-          },
-          "value": "",
-          "id": 9841266
-        },
-        {
-          "question": {
-            "id": 6,
-            "title": "Return date",
-            "placeholder": "Choose please",
-            "slug": "end-date",
-            "component": "BaseCalendar"
-          },
-          "value": "",
-          "id": 1190768
-        },
-        {
-          "question": {
-            "id": 7,
-            "title": "Expenses",
-            "placeholder": "Approximate budget",
-            "slug": "approximate-budget",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "beneath 1000$",
-                "id": 1
-              },
-              {
-                "name": "1000$ - 2000$",
-                "id": 2
-              },
-              {
-                "name": "2000$ - 3000$",
-                "id": 3
-              },
-              {
-                "name": "3000$ - 4000$",
-                "id": 4
-              },
-              {
-                "name": "4000$ - 6000$",
-                "id": 5
-              },
-              {
-                "name": "6000$ - 8000$",
-                "id": 6
-              },
-              {
-                "name": "above 8000$",
-                "id": 7
-              }
-            ]
-          },
-          "value": "",
-          "id": 3730225
-        },
-        {
-          "question": {
-            "id": 8,
-            "title": "Road Book",
-            "placeholder": "Yes/No",
-            "slug": "road-book",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "Yes",
-                "id": 1
-              },
-              {
-                "name": "No",
-                "id": 2
-              }
-            ]
-          },
-          "value": "",
-          "id": 4400651
-        },
-        {
-          "question": {
-            "id": 9,
-            "title": "Arrival time",
-            "placeholder": "Arrival time",
-            "slug": "arrival-time",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "1:00",
-                "id": 1
-              },
-              {
-                "name": "2:00",
-                "id": 2
-              },
-              {
-                "name": "3:00",
-                "id": 3
-              },
-              {
-                "name": "4:00",
-                "id": 4
-              },
-              {
-                "name": "5:00",
-                "id": 5
-              },
-              {
-                "name": "6:00",
-                "id": 6
-              },
-              {
-                "name": "7:00",
-                "id": 7
-              },
-              {
-                "name": "8:00",
-                "id": 8
-              },
-              {
-                "name": "9:00",
-                "id": 9
-              },
-              {
-                "name": "10:00",
-                "id": 10
-              },
-              {
-                "name": "11:00",
-                "id": 11
-              },
-              {
-                "name": "12:00",
-                "id": 12
-              },
-              {
-                "name": "13:00",
-                "id": 13
-              },
-              {
-                "name": "14:00",
-                "id": 14
-              },
-              {
-                "name": "15:00",
-                "id": 15
-              },
-              {
-                "name": "16:00",
-                "id": 16
-              },
-              {
-                "name": "17:00",
-                "id": 17
-              },
-              {
-                "name": "18:00",
-                "id": 18
-              },
-              {
-                "name": "19:00",
-                "id": 19
-              },
-              {
-                "name": "20:00",
-                "id": 20
-              },
-              {
-                "name": "21:00",
-                "id": 21
-              },
-              {
-                "name": "22:00",
-                "id": 22
-              },
-              {
-                "name": "23:00",
-                "id": 23
-              },
-              {
-                "name": "24:00",
-                "id": 24
-              }
-            ]
-          },
-          "value": "",
-          "id": 6995641
-        },
-        {
-          "question": {
-            "id": 10,
-            "title": "Return time",
-            "placeholder": "Returning time",
-            "slug": "returning-time",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "1:00",
-                "id": 1
-              },
-              {
-                "name": "2:00",
-                "id": 2
-              },
-              {
-                "name": "3:00",
-                "id": 3
-              },
-              {
-                "name": "4:00",
-                "id": 4
-              },
-              {
-                "name": "5:00",
-                "id": 5
-              },
-              {
-                "name": "6:00",
-                "id": 6
-              },
-              {
-                "name": "7:00",
-                "id": 7
-              },
-              {
-                "name": "8:00",
-                "id": 8
-              },
-              {
-                "name": "9:00",
-                "id": 9
-              },
-              {
-                "name": "10:00",
-                "id": 10
-              },
-              {
-                "name": "11:00",
-                "id": 11
-              },
-              {
-                "name": "12:00",
-                "id": 12
-              },
-              {
-                "name": "13:00",
-                "id": 13
-              },
-              {
-                "name": "14:00",
-                "id": 14
-              },
-              {
-                "name": "15:00",
-                "id": 15
-              },
-              {
-                "name": "16:00",
-                "id": 16
-              },
-              {
-                "name": "17:00",
-                "id": 17
-              },
-              {
-                "name": "18:00",
-                "id": 18
-              },
-              {
-                "name": "19:00",
-                "id": 19
-              },
-              {
-                "name": "20:00",
-                "id": 20
-              },
-              {
-                "name": "21:00",
-                "id": 21
-              },
-              {
-                "name": "22:00",
-                "id": 22
-              },
-              {
-                "name": "23:00",
-                "id": 23
-              },
-              {
-                "name": "24:00",
-                "id": 24
-              }
-            ]
-          },
-          "value": "",
-          "id": 476058
-        },
-        {
-          "question": {
-            "id": 11,
-            "title": "Max transfers",
-            "placeholder": "Number of transfers",
-            "slug": "transfers",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "0",
-                "id": 1
-              },
-              {
-                "name": "1",
-                "id": 2
-              },
-              {
-                "name": "2",
-                "id": 3
-              },
-              {
-                "name": "3",
-                "id": 4
-              },
-              {
-                "name": "4",
-                "id": 5
-              },
-              {
-                "name": "5",
-                "id": 6
-              }
-            ]
-          },
-          "value": "",
-          "id": 1637095
-        },
-        {
-          "question": {
-            "id": 12,
-            "title": "Max flight time",
-            "placeholder": "Flight time",
-            "slug": "max-flight-time",
-            "component": "BaseSelect",
-            "select_options": [
-              {
-                "name": "5 hours",
-                "id": 1
-              },
-              {
-                "name": "7 hours",
-                "id": 2
-              },
-              {
-                "name": "9 hours",
-                "id": 3
-              },
-              {
-                "name": "12 hours",
-                "id": 4
-              },
-              {
-                "name": "15 hours",
-                "id": 5
-              },
-              {
-                "name": "18 hours",
-                "id": 6
-              },
-              {
-                "name": "24 hours",
-                "id": 7
-              },
-              {
-                "name": "30 hours",
-                "id": 8
-              },
-              {
-                "name": "38 hours",
-                "id": 9
-              }
-            ]
-          },
-          "value": "",
-          "id": 243582
-        }
-      ]
+      ],
+      "slug": "approximate-budget"
     }
   ],
+  "plans": [],
   "airports": [
     {
       "icao": "00AK",

@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     plans: [],
     plan: {},
-    airports: []
+    airports: [],
+    additional_questions: []
   },
   getters: {
     plans(state) {
@@ -18,7 +19,10 @@ export default new Vuex.Store({
       return state.plan;
     },
     airports(state) {
-      return state.airports
+      return state.airports;
+    },
+    additional_questions(state) {
+      return state.additional_questions;
     }
   },
   mutations: {
@@ -29,7 +33,10 @@ export default new Vuex.Store({
       state.plan = plan;
     },
     SET_AIRPORTS(state, airports) {
-      state.airports = airports
+      state.airports = airports;
+    },
+    SET_ADDITIONAL_QUESTIONS(state, questions) {
+      state.additional_questions = questions;
     },
     ADD_PLAN(state, plan) {
       state.plans.push(plan);
@@ -56,6 +63,15 @@ export default new Vuex.Store({
           console.log("There was an error:", error.response);
         });
     },
+    fetchAdditionalQuestions({ commit }) {
+      ClientService.getAdditionalQuestions()
+        .then(response => {
+          commit("SET_ADDITIONAL_QUESTIONS", response.data);
+        })
+        .catch(error => {
+          console.log("There was an error:", error.response);
+        });
+    },
     fetchPlan({ commit }, id) {
       ClientService.getPlan(id)
         .then(response => {
@@ -65,14 +81,14 @@ export default new Vuex.Store({
           console.log("There was an error:", error.response);
         });
     },
-    fetchAirports({commit}) {
+    fetchAirports({ commit }) {
       ClientService.getAirports()
         .then(response => {
-          commit("SET_AIRPORTS", response.data)
+          commit("SET_AIRPORTS", response.data);
         })
         .catch(error => {
-          console.log("There was an error:", error.response)
-        })
+          console.log("There was an error:", error.response);
+        });
     },
     createPlan({ commit }, plan) {
       ClientService.postPlan(plan);
