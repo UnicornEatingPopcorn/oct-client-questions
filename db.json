@@ -434,7 +434,59 @@
           "id": 5
         }
       ],
+      "slug": "max-flight-time"
+    },
+    {
+      "title": "Do you need a travel insurance?",
+      "select_options": [
+        { "name": "Yes", "id": 1, "slug": "" },
+        { "name": "No", "id": 2 }
+      ],
+      "slug": "transfers"
+    },
+    {
+      "title": "Do you need a health insurance?",
+      "select_options": [
+        { "name": "Yes", "id": 1, "slug": "" },
+        { "name": "No", "id": 2 }
+      ],
+      "slug": "returning-time"
+    },
+    {
+      "title": "What kind of transportation would you prefer to use in your trip?",
+      "select_options": [
+        { "name": "Airplane", "id": 1, "slug": "" },
+        { "name": "Train", "id": 2, "slug": "" },
+        { "name": "Bus", "id": 3, "slug": "" },
+        { "name": "Car rental", "id": 4, "slug": "" },
+        { "name": "Taxi", "id": 5 }
+      ],
       "slug": "approximate-budget"
+    },
+    {
+      "title": "Which of the following suits your journey the most?",
+      "select_options": [
+        { "name": "Quiet family trip", "id": 1 },
+        { "name": "Hang out with friends away from everyday life", "id": 2 },
+        { "name": "Parties", "id": 3 },
+        { "name": "Extreme outdoor activities", "id": 4 },
+        { "name": "Festivals and music events", "id": 5 },
+        { "name": "Real adventure", "id": 6 }
+      ],
+      "slug": "arrival-time"
+    },
+    {
+      "title": "What class of comfort do you prefer to get to the start point of your trip?",
+      "select_options": [
+        { "name": "Economy", "id": 1 },
+        { "name": "Business", "id": 2 }
+      ],
+      "slug": "travelers-quantity"
+    },
+    {
+      "title": "Returning date?",
+      "select_options": [{ "name": "add calendar", "id": 1 }],
+      "slug": "there-and-back"
     }
   ],
   "plans": [],

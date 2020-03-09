@@ -1,6 +1,6 @@
 <template lang="pug">
 .columns.is-multiple
-  .column    
+  .column(v-if="slug===question.slug")   
     label.base-select__label {{ question.title }}
     select.base-input
       option(
@@ -13,7 +13,8 @@
 <script>
 export default {
   props: {
-    question: Object
+    question: Object,
+    slug: String
   }
 };
 </script>

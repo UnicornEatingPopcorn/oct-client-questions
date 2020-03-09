@@ -23,7 +23,8 @@
           AdditionalQuestionSelect(
             v-for="question in additionalQuestions"
             :question="question"
-            v-if="isAdditionalQuestionSelectOpened")
+            v-if="isAdditionalQuestionSelectOpened"
+            :slug="mainQuestionSlug")
 
 </template>
 
@@ -105,6 +106,8 @@ export default {
     slugComparison() {
       if (this.slugs.includes(this.mainQuestionSlug)) {
         return (this.isAdditionalQuestionSelectOpened = true);
+      } else {
+        this.isAdditionalQuestionSelectOpened = false;
       }
     }
   }
