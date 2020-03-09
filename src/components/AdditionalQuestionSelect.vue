@@ -1,6 +1,6 @@
 <template lang="pug">
 .columns.is-multiple
-  .column(v-for="question in additional_questions")
+  .column    
     label.base-select__label {{ question.title }}
     select.base-input
       option(
@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 export default {
-  computed: mapState(["additional_questions"])
+  props: {
+    question: Object
+  }
 };
 </script>
 

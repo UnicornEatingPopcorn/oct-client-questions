@@ -20,6 +20,9 @@ export default {
   computed: {
     question() {
       return this.answer.question;
+    },
+    slug() {
+      return this.question.slug;
     }
   },
   components: {
@@ -29,6 +32,7 @@ export default {
   },
   methods: {
     updateValueFromChild(event) {
+      this.$emit("watchSlugName", this.slug);
       return (this.answer.value = event);
     }
   }

@@ -9,7 +9,7 @@ export default new Vuex.Store({
     plans: [],
     plan: {},
     airports: [],
-    additional_questions: []
+    additionalQuestions: []
   },
   getters: {
     plans(state) {
@@ -21,8 +21,8 @@ export default new Vuex.Store({
     airports(state) {
       return state.airports;
     },
-    additional_questions(state) {
-      return state.additional_questions;
+    additionalQuestions(state) {
+      return state.additionalQuestions;
     }
   },
   mutations: {
@@ -36,7 +36,7 @@ export default new Vuex.Store({
       state.airports = airports;
     },
     SET_ADDITIONAL_QUESTIONS(state, questions) {
-      state.additional_questions = questions;
+      state.additionalQuestions = questions;
     },
     ADD_PLAN(state, plan) {
       state.plans.push(plan);

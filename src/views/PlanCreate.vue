@@ -9,7 +9,8 @@
            Answer(
              v-for="answer in plan.answers"
              :key="answer.question.id"
-             :answer="answer")
+             :answer="answer"
+             @watchSlugName="watchSlugNameFromChild")
         .columns
           .column.create-plan-page__button
             button.button.is-black Submit
@@ -17,16 +18,19 @@
       .create-plan-page__question-plan
         p.create-plan-page__title Additional questions
         .create-plan-page__line
-        p.create-plan-page__info There is no additional questions yet. Please answer the main questions to figure out if we need more information for create your dream trip.
+          p.create-plan-page__info(v-if="!isAdditionalQuestionSelectOpened") There is no additional questions yet. Please answer the main questions to figure out if we need more information for create your dream trip.
         .create-plan__additional-questions-container
-          AdditionalQuestionSelect
+          AdditionalQuestionSelect(
+            v-for="question in additionalQuestions"
+            :question="question"
+            v-if="isAdditionalQuestionSelectOpened")
+
 </template>
 
 <script>
 import ClientService from "@/services/ClientService.js";
 import Answer from "@/components/Answer.vue";
 import AdditionalQuestionSelect from "@/components/AdditionalQuestionSelect.vue";
-import { mapState } from "vuex";
 
 export default {
   components: {
@@ -35,7 +39,10 @@ export default {
   },
   data() {
     return {
-      plan: this.createNewPlan()
+      plan: this.createNewPlan(),
+      mainQuestionSlug: "",
+      isAdditionalQuestionSelectOpened: false,
+      slugs: []
     };
   },
   created() {
@@ -54,7 +61,15 @@ export default {
     this.$store.dispatch("fetchAdditionalQuestions");
   },
 
-  computed: mapState(["additional_questions"]),
+  updated() {
+    this.additionalQuestionsSlugs();
+  },
+
+  computed: {
+    additionalQuestions() {
+      return this.$store.getters.additionalQuestions;
+    }
+  },
 
   methods: {
     createNewPlan() {
@@ -77,6 +92,20 @@ export default {
         .catch(() => {
           console.log("There was a problem creating your plan");
         });
+    },
+    watchSlugNameFromChild(slug) {
+      this.mainQuestionSlug = slug;
+      return this.slugComparison();
+    },
+    additionalQuestionsSlugs() {
+      return (this.slugs = this.additionalQuestions.map(
+        question => question.slug
+      ));
+    },
+    slugComparison() {
+      if (this.slugs.includes(this.mainQuestionSlug)) {
+        return (this.isAdditionalQuestionSelectOpened = true);
+      }
     }
   }
 };
