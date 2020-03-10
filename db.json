@@ -407,11 +407,12 @@
           "id": 9
         }
       ]
-    }
-  ],
-  "additional_questions": [
+    },
     {
+      "id": 13,
       "title": "Rate the quality of your previous trip?",
+      "slug": "max-flight-time",
+      "component": "AdditionalQuestionSelect",
       "select_options": [
         {
           "name": "I had a lot of impressions and new discoveries",
@@ -426,11 +427,11 @@
           "id": 3
         },
         {
-          "name": "I’m disappointed",
+          "name": "I‚Äôm disappointed",
           "id": 4
         },
         {
-          "name": "I don’t know how to relax",
+          "name": "I don‚Äôt know how to relax",
           "id": 5
         }
       ],
@@ -438,7 +439,10 @@
       "value": ""
     },
     {
+      "id": 14,
       "title": "Do you need a travel insurance?",
+      "slug": "transfers",
+      "component": "AdditionalQuestionSelect",
       "select_options": [
         {
           "name": "Yes",
@@ -454,7 +458,10 @@
       "value": ""
     },
     {
+      "id": 15,
       "title": "Do you need a health insurance?",
+      "slug": "returning-time",
+      "component": "AdditionalQuestionSelect",
       "select_options": [
         {
           "name": "Yes",
@@ -470,7 +477,10 @@
       "value": ""
     },
     {
+      "id": 16,
       "title": "What kind of transportation would you prefer to use in your trip?",
+      "slug": "approximate-budget",
+      "component": "AdditionalQuestionSelect",
       "select_options": [
         {
           "name": "Airplane",
@@ -501,7 +511,10 @@
       "value": ""
     },
     {
+      "id": 17,
       "title": "Which of the following suits your journey the most?",
+      "slug": "arrival-time",
+      "component": "AdditionalQuestionSelect",
       "select_options": [
         {
           "name": "Quiet family trip",
@@ -532,7 +545,10 @@
       "value": ""
     },
     {
+      "id": 18,
       "title": "What class of comfort do you prefer to get to the start point of your trip?",
+      "slug": "travelers-quantity",
+      "component": "AdditionalQuestionSelect",
       "select_options": [
         {
           "name": "Economy",
@@ -547,7 +563,10 @@
       "value": ""
     },
     {
+      "id": 19,
       "title": "Returning date?",
+      "slug": "there-and-back",
+      "component": "AdditionalQuestionSelect",
       "select_options": [
         {
           "name": "add calendar",
@@ -558,6 +577,7 @@
       "value": ""
     }
   ],
+
   "plans": [
     {
       "id": 3341847,

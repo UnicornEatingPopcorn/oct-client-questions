@@ -9,10 +9,16 @@
         :key="option.id"
         :value="option.name"
         :selected="option.name === null") {{ option.name }}
+  AdditionalAnswers(:question="question")
 </template>
 
 <script>
+import AdditionalAnswers from "@/components/AdditionalAnswers.vue";
+
 export default {
+  components: {
+    AdditionalAnswers
+  },
   props: {
     question: Object,
     slug: String
