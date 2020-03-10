@@ -1,25 +1,29 @@
 <template lang="pug">
-.columns.is-multiple
-  .column(v-if="slug===question.slug")   
-    label.additional-question-select__label {{ question.title }}
-    select.additional-question-input(v-model="question.value" @change="updateValue")
-      option(value="" disabled hidden selected) Please choose one...
-      option(
-        v-for="option in question.select_options"
-        :key="option.id"
-        :value="option.name"
-        :selected="option.name === null") {{ option.name }}
+.additional-question-select
+  .columns.is-multiple
+    .column(v-if="slug===question.slug")   
+      label.additional-question-select__label {{ question.title }}
+      select.additional-question-input(v-model="question.value" @change="updateValue")
+        option(value="" disabled hidden selected) Please choose one...
+        option(
+          v-for="option in question.select_options"
+          :key="option.id"
+          :value="option.name"
+          :selected="option.name === null") {{ option.name }}
+
 </template>
 
 <script>
 export default {
   props: {
     question: Object,
-    slug: String
+    slug: String,
+    additionalAnswer: Object
   },
   methods: {
     updateValue(event) {
       this.$emit("updatePropValue", event.target.value);
+      return (this.additionalAnswer.title = this.question.title);
     }
   }
 };

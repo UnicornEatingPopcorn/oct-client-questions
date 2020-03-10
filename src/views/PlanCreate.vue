@@ -19,17 +19,24 @@
         p.create-plan-page__title Additional questions
         .create-plan-page__line
           p.create-plan-page__info(v-if="!isAdditionalQuestionSelectOpened") There is no additional questions yet. Please answer the main questions to figure out if we need more information for create your dream trip.
-        .create-plan__additional-questions-container
+        .columns
           AdditionalQuestionSelect(
             v-for="question in additionalQuestions"
             :question="question"
             v-if="isAdditionalQuestionSelectOpened"
             :slug="mainQuestionSlug"    
-            @updatePropValue="updateValueFromChild")
+            @updatePropValue="updateValueFromChild"
+            :additionalAnswer="additionalAnswer")
+    
+      .columns
+        AdditionalAnswer(
+          :additionalAnswer="answer"
+          v-if="additionalAnswers.length"
+          v-for="answer in additionalAnswers")
         
       .columns(v-if="submitButtonUnderAdditionalAnswers")
         .column.create-plan-page__button
-          button.button.is-black(@click="addAnswersToThePlan") Submit
+          button.button.is-black Submit
 
 
 </template>
@@ -38,11 +45,13 @@
 import ClientService from "@/services/ClientService.js";
 import Answer from "@/components/Answer.vue";
 import AdditionalQuestionSelect from "@/components/AdditionalQuestionSelect.vue";
+import AdditionalAnswer from "@/components/AdditionalAnswer.vue";
 
 export default {
   components: {
     Answer,
-    AdditionalQuestionSelect
+    AdditionalQuestionSelect,
+    AdditionalAnswer
   },
   data() {
     return {
@@ -51,7 +60,8 @@ export default {
       isAdditionalQuestionSelectOpened: false,
       slugs: [],
       submitButtonUnderAdditionalAnswers: false,
-      additionalAnswer: ""
+      additionalAnswers: [],
+      additionalAnswer: this.createAdditionalAnswer()
     };
   },
   created() {
@@ -89,6 +99,15 @@ export default {
         answers: []
       };
     },
+    createAdditionalAnswer() {
+      const id = Math.floor(Math.random() * 10000000);
+
+      return {
+        id: id,
+        title: "",
+        value: ""
+      };
+    },
     createPlan() {
       this.$store
         .dispatch("createPlan", this.plan)
@@ -122,9 +141,8 @@ export default {
       }
     },
     updateValueFromChild(event) {
-      return (this.additionalAnswer = event);
-    },
-    addAnswersToThePlan() {}
+      return (this.additionalAnswer.value = event);
+    }
   }
 };
 </script>
