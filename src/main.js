@@ -2,12 +2,10 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router/router.js";
 import store from "./store/store.js";
-import VueFuse from "vue-fuse";
 // import firebase from "@/services/FirebaseService"
 
 require("./assets/main.sass");
 Vue.config.productionTip = false;
-Vue.use(VueFuse);
 
 // let vue = null
 // firebase.auth().onAuthStateChanged(async user => {

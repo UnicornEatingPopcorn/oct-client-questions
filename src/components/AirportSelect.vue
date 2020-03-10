@@ -1,11 +1,10 @@
 <template lang="pug">
 .column.is-paddingless.airport-select
   label.airport-select__label {{ label }}
-  // vue-fuse(:list="airports" :keys="keys" :inputChangeEventName="foundAirport")
-  input.airport-select__input.airport-select__placeholder(type="text" placeholder="Find the city" @click="showDropdownItems" v-model="airport")
+  input.airport-select__input.airport-select__placeholder(type="text" placeholder="Find the city" @input="searchAirport(query)" v-model="query" @click="showDropdownItems")
   .dropdown-items(:class="{'show-dropdown-items': showItems}")
-    .dropdown-item(v-for="airport in airports" :key="airport.icao" @click="setAirport(airport)") {{ airport.name }}
-     span.badge.badge-primary {{ airport.city }} {{ airport.country }}
+    .dropdown-item(v-for="airport in airports" :key="airport.icao" @click="setAirport(airport)") {{ airport.city }}
+     span.badge.badge-primary {{ airport.name }} {{ airport.country }}
      .sm-line
 </template>
 
@@ -17,16 +16,13 @@ export default {
     label: {
       type: String,
       default: ""
-    },
-    value: {
-      type: [Number, String]
     }
   },
   data() {
     return {
       showItems: false,
       airports: [],
-      airport: ""
+      query: ""
     };
   },
   created() {
@@ -43,9 +39,16 @@ export default {
       this.showItems = !this.showItems;
     },
     setAirport(airport) {
-      this.airport = airport.name;
-      this.$emit("updatePropValue", this.airport);
+      this.query = airport.city;
+      this.$emit("updatePropValue", this.query);
       this.showItems = false;
+    },
+    searchAirport() {
+      this.airports = this.airports.filter(airport => {
+        return (
+          airport.city.toLowerCase().indexOf(this.query.toLowerCase()) > -1
+        );
+      });
     }
   }
 };

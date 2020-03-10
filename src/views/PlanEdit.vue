@@ -16,8 +16,9 @@
                  v-for="option in answer.question.select_options"
                  :key="option.id") {{ option.name }} 
             input.input.is-small.plan-edit__input(v-if="answer.question.component === 'BaseCalendar'" type="date" v-model="answer.value")              
-            select.input.is-small.plan-edit__input(v-if="answer.question.component === 'AirportSelect'" v-model="answer.value")
-              option(v-if="answer.value === true") {{ answer.value }}
+            select.input.is-small.plan-edit__input(v-model="answer.value" v-if="answer.question.component === 'AirportSelect'")
+              option(v-if="answer.value") {{ answer.value }}
+
               option(value="" disabled selected hidden) Please choose one...
               option(
                  v-for="airport in airports"
@@ -36,7 +37,13 @@ export default {
     this.$store.dispatch("fetchPlan", this.id);
     this.$store.dispatch("fetchAirports");
   },
-  computed: mapState(["plan", "airports"]),
+
+  computed: {
+    plan() {
+      return this.$store.getters.plan;
+    },
+    ...mapState(["airports"])
+  },
   methods: {
     editPlan() {
       this.$store
