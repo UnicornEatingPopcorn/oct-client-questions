@@ -11,7 +11,7 @@
              :key="answer.question.id"
              :answer="answer"
              @watchSlugName="watchSlugNameFromChild")
-        .columns
+        .columns(v-if="!submitButtonUnderAdditionalAnswers")
           .column.create-plan-page__button
             button.button.is-black Submit
     .column.is-4.is-offset-1
@@ -24,7 +24,13 @@
             v-for="question in additionalQuestions"
             :question="question"
             v-if="isAdditionalQuestionSelectOpened"
-            :slug="mainQuestionSlug")
+            :slug="mainQuestionSlug"    
+            @updatePropValue="updateValueFromChild")
+        
+      .columns(v-if="submitButtonUnderAdditionalAnswers")
+        .column.create-plan-page__button
+          button.button.is-black(@click="addAnswersToThePlan") Submit
+
 
 </template>
 
@@ -43,7 +49,9 @@ export default {
       plan: this.createNewPlan(),
       mainQuestionSlug: "",
       isAdditionalQuestionSelectOpened: false,
-      slugs: []
+      slugs: [],
+      submitButtonUnderAdditionalAnswers: false,
+      additionalAnswer: ""
     };
   },
   created() {
@@ -105,11 +113,18 @@ export default {
     },
     slugComparison() {
       if (this.slugs.includes(this.mainQuestionSlug)) {
-        return (this.isAdditionalQuestionSelectOpened = true);
+        return (
+          (this.isAdditionalQuestionSelectOpened = true),
+          (this.submitButtonUnderAdditionalAnswers = true)
+        );
       } else {
         this.isAdditionalQuestionSelectOpened = false;
       }
-    }
+    },
+    updateValueFromChild(event) {
+      return (this.additionalAnswer = event);
+    },
+    addAnswersToThePlan() {}
   }
 };
 </script>
