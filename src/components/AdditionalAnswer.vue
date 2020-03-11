@@ -1,19 +1,21 @@
 <template lang="pug">
-.columns
-  .column
-    p.additional-answer__label {{ additionalAnswer}} 
+.additional-answer
+  p.additional-answer__label {{ additionalAnswer.title}}: {{ additionalAnswer.value}}  
 </template>
 
 <script>
 export default {
   props: {
-    additionalAnswer: String
+    additionalAnswer: Object
   }
 };
 </script>
 
 <style lang="sass">
-.additional-answer__label
-  color: white
-  font-size: 14px
+.additional-answer
+  padding-top: 10px
+
+  &__label
+    color: white
+    font-size: 16px
 </style>

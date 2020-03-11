@@ -1,15 +1,14 @@
 <template lang="pug">
 .additional-question-select
-  .columns.is-multiple
-    .column(v-if="slug===question.slug")   
-      label.additional-question-select__label {{ question.title }}
-      select.additional-question-input(v-model="question.value" @change="updateValue")
-        option(value="" disabled hidden selected) Please choose one...
-        option(
-          v-for="option in question.select_options"
-          :key="option.id"
-          :value="option.name"
-          :selected="option.name === null") {{ option.name }}
+  .column(v-if="slug===question.slug")   
+    label.additional-question-select__label {{ question.title }}
+    select.additional-question-input(v-model="question.value" @change="updateValue")
+      option(value="" disabled hidden selected) Please choose one...
+      option(
+        v-for="option in question.select_options"
+        :key="option.id"
+        :value="option.name"
+        :selected="option.name === null") {{ option.name }}
 
 </template>
 
@@ -21,9 +20,10 @@ export default {
     additionalAnswer: Object
   },
   methods: {
-    updateValue(event) {
-      this.$emit("updatePropValue", event.target.value);
-      return (this.additionalAnswer.title = this.question.title);
+    updateValue() {
+      this.additionalAnswer.value = event.target.value;
+      this.additionalAnswer.title = this.question.title;
+      this.$emit("updatePropValue", this.additionalAnswer);
     }
   }
 };
@@ -32,7 +32,7 @@ export default {
 <style lang="sass">
 .additional-question-select__label
   color: white
-  font-size: 14px
+  font-size: 16px
 
 .additional-question-input
    background-color: #495057 !important
@@ -42,5 +42,5 @@ export default {
    border-block-start: 0px !important
    border-inline-end: 0px !important
    width: 100%
-   font-size: 15px
+   font-size: 16px
 </style>

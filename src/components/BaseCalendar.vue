@@ -17,7 +17,7 @@ export default {
   },
   methods: {
     updateValue(event) {
-      this.$emit("updatePropValue", event.target.value)
+      this.$emit("updatePropValue", event.target.value);
     }
   }
 };
@@ -26,5 +26,5 @@ export default {
 <style lang="sass">
 .base-calendar__label
   color: white
-  font-size: 14px
+  font-size: 16px
 </style>

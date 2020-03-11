@@ -85,7 +85,7 @@ export default {
 
   &__label
     color: white
-    font-size: 14px
+    font-size: 16px
 
   &__placeholder::placeholder
     color: #f7b944
@@ -98,5 +98,5 @@ export default {
     border-block-start: 0px !important
     border-inline-end: 0px !important
     width: 100%
-    font-size: 15px
+    font-size: 16px
 </style>

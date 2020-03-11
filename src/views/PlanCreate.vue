@@ -14,7 +14,7 @@
         .columns(v-if="!submitButtonUnderAdditionalAnswers")
           .column.create-plan-page__button
             button.button.is-black Submit
-    .column.is-4.is-offset-1
+    .column.is-5
       .create-plan-page__question-plan
         p.create-plan-page__title Additional questions
         .create-plan-page__line
@@ -25,14 +25,15 @@
             :question="question"
             v-if="isAdditionalQuestionSelectOpened"
             :slug="mainQuestionSlug"    
-            @updatePropValue="updateValueFromChild"
+            @updatePropValue="updatePropValueFromChild"
             :additionalAnswer="additionalAnswer")
     
-      .columns
-        AdditionalAnswer(
-          :additionalAnswer="answer"
-          v-if="additionalAnswers.length"
-          v-for="answer in additionalAnswers")
+      .columns.is-multiline
+        .column
+          AdditionalAnswer(
+            :additionalAnswer="answer"
+            v-if="additionalAnswers.length"
+            v-for="answer in additionalAnswers")
         
       .columns(v-if="submitButtonUnderAdditionalAnswers")
         .column.create-plan-page__button
@@ -61,7 +62,7 @@ export default {
       slugs: [],
       submitButtonUnderAdditionalAnswers: false,
       additionalAnswers: [],
-      additionalAnswer: this.createAdditionalAnswer()
+      additionalAnswer: {}
     };
   },
   created() {
@@ -140,8 +141,9 @@ export default {
         this.isAdditionalQuestionSelectOpened = false;
       }
     },
-    updateValueFromChild(event) {
-      return (this.additionalAnswer.value = event);
+    updatePropValueFromChild(answer) {
+      this.additionalAnswer = this.createAdditionalAnswer();
+      this.additionalAnswers.push(answer);
     }
   }
 };
@@ -155,7 +157,7 @@ export default {
   min-height: 81vh
 
   &__title
-    font-size: 18px
+    font-size: 20px
     color: white
     display: flex
     justify-content: center

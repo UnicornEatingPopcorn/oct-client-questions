@@ -35,7 +35,7 @@ export default {
 <style lang="sass">
 .base-select__label
   color: white
-  font-size: 14px
+  font-size: 16px
 
 .base-input
    background-color: #495057 !important
@@ -45,5 +45,5 @@ export default {
    border-block-start: 0px !important
    border-inline-end: 0px !important
    width: 100%
-   font-size: 15px
+   font-size: 16px
 </style>
