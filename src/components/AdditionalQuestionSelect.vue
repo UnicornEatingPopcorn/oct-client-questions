@@ -30,9 +30,12 @@ export default {
 </script>
 
 <style lang="sass">
-.additional-question-select__label
-  color: white
-  font-size: 16px
+.additional-question-select
+  margin-top: 7px
+
+  &__label
+    color: white
+    font-size: 16px
 
 .additional-question-input
    background-color: #495057 !important

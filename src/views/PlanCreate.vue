@@ -14,11 +14,11 @@
         .columns(v-if="!submitButtonUnderAdditionalAnswers")
           .column.create-plan-page__button
             button.button.is-black Submit
-    .column.is-5
+    .column.is-5.create-plan-page__additional-questions
       .create-plan-page__question-plan
         p.create-plan-page__title Additional questions
         .create-plan-page__line
-          p.create-plan-page__info(v-if="!isAdditionalQuestionSelectOpened") There is no additional questions yet. Please answer the main questions to figure out if we need more information for create your dream trip.
+        p.create-plan-page__info(v-if="!isAdditionalQuestionSelectOpened") There is no additional questions yet. Please answer the main questions to figure out if we need more information for create your dream trip.
         .columns
           AdditionalQuestionSelect(
             v-for="question in additionalQuestions"
@@ -33,7 +33,8 @@
           AdditionalAnswer(
             :additionalAnswer="answer"
             v-if="additionalAnswers.length"
-            v-for="answer in additionalAnswers")
+            v-for="answer in additionalAnswers"
+            :additionalAnswers="additionalAnswers")
         
       .columns(v-if="submitButtonUnderAdditionalAnswers")
         .column.create-plan-page__button
@@ -176,7 +177,16 @@ export default {
     background-color: #495057
     border-radius: 4px
     padding: 20px 40px
-    margin-bottom: 10px
+
+  &__info
+    margin: 10px 0px 20px 9px
+    color: white
+    font-size: 18px
+
+  &__additional-questions
+    display: flex !important
+    flex-direction: column
+    justify-content: space-between
 
 .button:hover
   transform: scale(1.03)

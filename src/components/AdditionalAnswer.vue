@@ -1,12 +1,33 @@
 <template lang="pug">
 .additional-answer
-  p.additional-answer__label {{ additionalAnswer.title}}: {{ additionalAnswer.value}}  
+  p.additional-answer__title {{ additionalAnswer.title}} : 
+  p.additional-answer__value {{ additionalAnswer.value}}  
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      uniqueAnswers: []
+    };
+  },
   props: {
-    additionalAnswer: Object
+    additionalAnswer: Object,
+    additionalAnswers: Array
+  },
+  created() {
+    if (this.additionalAnswers.length > 1) {
+      const titles = this.additionalAnswers
+        .map(answer => answer)
+        .map(answer => answer.title);
+
+      const uniqueAnswers = titles
+        .map((title, index) => titles.lastIndexOf(title) === index && index)
+        .filter(index => titles[index])
+        .map(index => titles[index]);
+      debugger;
+      this.uniqueAnswers = uniqueAnswers;
+    }
   }
 };
 </script>
@@ -15,7 +36,11 @@ export default {
 .additional-answer
   padding-top: 10px
 
-  &__label
+  &__title
     color: white
     font-size: 16px
+
+  &__value
+    color: #f7b944
+    font-size: 18px
 </style>
