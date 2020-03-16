@@ -8,25 +8,26 @@
 export default {
   data() {
     return {
-      uniqueAnswers: []
+      uniqueAnswers: this.findUniqueAnswers()
     };
   },
   props: {
     additionalAnswer: Object,
     additionalAnswers: Array
   },
-  created() {
-    if (this.additionalAnswers.length > 1) {
-      const titles = this.additionalAnswers
-        .map(answer => answer)
-        .map(answer => answer.title);
+  methods: {
+    findUniqueAnswers() {
+      if (this.additionalAnswers.length > 1) {
+        const titles = this.additionalAnswers
+          .map(answer => answer)
+          .map(answer => answer.title);
 
-      const uniqueAnswers = titles
-        .map((title, index) => titles.lastIndexOf(title) === index && index)
-        .filter(index => titles[index])
-        .map(index => titles[index]);
-      debugger;
-      this.uniqueAnswers = uniqueAnswers;
+        const uniqueAnswers = titles
+          .map((title, index) => titles.lastIndexOf(title) === index && index)
+          .filter(index => titles[index])
+          .map(index => titles[index]);
+        return uniqueAnswers;
+      }
     }
   }
 };

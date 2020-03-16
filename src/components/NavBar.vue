@@ -53,6 +53,8 @@ nav.navbar
 </template>
 
 <script>
+import firebase from "@/services/FirebaseService";
+
 export default {
   data() {
     return {
@@ -64,6 +66,10 @@ export default {
   },
   methods: {
     signIn() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.login, this.password)
+        .catch(function() {});
       return (this.isSignInModalOpened = false);
     },
     closeNavbarDropdown() {
