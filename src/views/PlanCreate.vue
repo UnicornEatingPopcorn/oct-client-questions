@@ -10,7 +10,7 @@
              v-for="answer in plan.answers"
              :key="answer.question.id"
              :answer="answer"
-             @watchSlugName="watchSlugNameFromChild")
+             @watchSlugName="changeSlugNameFromChild")
 
     .column.is-5.create-plan-page__additional-questions
       .create-plan-page__question-plan
@@ -19,9 +19,7 @@
         p.create-plan-page__info(v-if="!mainQuestionSlug") There is no additional questions yet. Please answer the main questions to figure out if we need more information for create your dream trip.
         .columns
           AdditionalQuestionSelect(
-            v-for="question in additionalQuestions"
-            :question="question"
-            v-if="question.slug === mainQuestionSlug"
+            :question="currentAdditionalQuestion"
             :slug="mainQuestionSlug"    
             @updatePropValue="updatePropValueFromChild"
             :additionalAnswer="additionalAnswer")
@@ -85,6 +83,11 @@ export default {
   computed: {
     additionalQuestions() {
       return this.$store.getters.additionalQuestions;
+    },
+    currentAdditionalQuestion() {
+      return this.additionalQuestions.find(
+        question => question.slug === this.mainQuestionSlug
+      );
     }
   },
 
@@ -119,7 +122,7 @@ export default {
           console.log("There was a problem creating your plan");
         });
     },
-    watchSlugNameFromChild(slug) {
+    changeSlugNameFromChild(slug) {
       this.mainQuestionSlug = slug;
     },
     additionalQuestionsSlugs() {
