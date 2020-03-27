@@ -11,19 +11,17 @@
              :key="answer.question.id"
              :answer="answer"
              @watchSlugName="watchSlugNameFromChild")
-        .columns(v-if="!submitButtonUnderAdditionalAnswers")
-          .column.create-plan-page__button
-            button.button.is-black Submit
+
     .column.is-5.create-plan-page__additional-questions
       .create-plan-page__question-plan
         p.create-plan-page__title Additional questions
         .create-plan-page__line
-        p.create-plan-page__info(v-if="!isAdditionalQuestionSelectOpened") There is no additional questions yet. Please answer the main questions to figure out if we need more information for create your dream trip.
+        p.create-plan-page__info(v-if="!mainQuestionSlug") There is no additional questions yet. Please answer the main questions to figure out if we need more information for create your dream trip.
         .columns
           AdditionalQuestionSelect(
             v-for="question in additionalQuestions"
             :question="question"
-            v-if="isAdditionalQuestionSelectOpened"
+            v-if="question.slug === mainQuestionSlug"
             :slug="mainQuestionSlug"    
             @updatePropValue="updatePropValueFromChild"
             :additionalAnswer="additionalAnswer")
@@ -36,7 +34,7 @@
             v-for="answer in additionalAnswers"
             :additionalAnswers="additionalAnswers")
         
-      .columns(v-if="submitButtonUnderAdditionalAnswers")
+      .columns
         .column.create-plan-page__button
           button.button.is-black Submit
 
@@ -58,10 +56,8 @@ export default {
   data() {
     return {
       plan: this.createNewPlan(),
-      mainQuestionSlug: "",
-      isAdditionalQuestionSelectOpened: false,
+      mainQuestionSlug: null,
       slugs: [],
-      submitButtonUnderAdditionalAnswers: false,
       additionalAnswers: [],
       additionalAnswer: {}
     };
@@ -125,22 +121,11 @@ export default {
     },
     watchSlugNameFromChild(slug) {
       this.mainQuestionSlug = slug;
-      return this.slugComparison();
     },
     additionalQuestionsSlugs() {
       return (this.slugs = this.additionalQuestions.map(
         question => question.slug
       ));
-    },
-    slugComparison() {
-      if (this.slugs.includes(this.mainQuestionSlug)) {
-        return (
-          (this.isAdditionalQuestionSelectOpened = true),
-          (this.submitButtonUnderAdditionalAnswers = true)
-        );
-      } else {
-        this.isAdditionalQuestionSelectOpened = false;
-      }
     },
     updatePropValueFromChild(answer) {
       this.additionalAnswer = this.createAdditionalAnswer();
