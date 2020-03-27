@@ -30,7 +30,7 @@
             :additionalAnswer="answer"
             v-if="additionalAnswers.length"
             v-for="answer in additionalAnswers"
-            :additionalAnswers="additionalAnswers")
+            :key = "answer.value")
         
       .columns
         .column.create-plan-page__button
@@ -55,7 +55,6 @@ export default {
     return {
       plan: this.createNewPlan(),
       mainQuestionSlug: null,
-      slugs: [],
       additionalAnswers: [],
       additionalAnswer: {}
     };
@@ -74,10 +73,6 @@ export default {
         console.log("There was an error:", error.response);
       });
     this.$store.dispatch("fetchAdditionalQuestions");
-  },
-
-  updated() {
-    this.additionalQuestionsSlugs();
   },
 
   computed: {
@@ -100,15 +95,6 @@ export default {
         answers: []
       };
     },
-    createAdditionalAnswer() {
-      const id = Math.floor(Math.random() * 10000000);
-
-      return {
-        id: id,
-        title: "",
-        value: ""
-      };
-    },
     createPlan() {
       this.$store
         .dispatch("createPlan", this.plan)
@@ -125,14 +111,16 @@ export default {
     changeSlugNameFromChild(slug) {
       this.mainQuestionSlug = slug;
     },
-    additionalQuestionsSlugs() {
-      return (this.slugs = this.additionalQuestions.map(
-        question => question.slug
-      ));
-    },
     updatePropValueFromChild(answer) {
-      this.additionalAnswer = this.createAdditionalAnswer();
-      this.additionalAnswers.push(answer);
+      const existingAnswer = this.additionalAnswers.find(
+        oldAnswer => answer.id === oldAnswer.id
+      );
+
+      if (existingAnswer) {
+        existingAnswer.value = answer.value;
+      } else {
+        this.additionalAnswers.push(answer);
+      }
     }
   }
 };

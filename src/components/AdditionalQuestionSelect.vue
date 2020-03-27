@@ -1,6 +1,6 @@
 <template lang="pug">
-.additional-question-select
-  .column(v-if="slug===question.slug")   
+.additional-question-select(v-if="question")
+  .column   
     label.additional-question-select__label {{ question.title }}
     select.additional-question-input(v-model="question.value" @change="updateValue")
       option(value="" disabled hidden selected) Please choose one...
