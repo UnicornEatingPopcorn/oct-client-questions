@@ -1,5 +1,5 @@
 # oct-user-questions
-
+Question form for creating personal trip with all bookings by one click. Work in progress.
 ## Project setup
 ```
 npm install
